@@ -118,19 +118,6 @@
                 justify-content: space-around;
             }
 
-            @-webkit-keyframes slide {
-                100% {
-                    opacity: 1;
-                    /*-webkit-transform: translateY(-10%)*/
-                }
-            }
-
-            @-moz-keyframes slide {
-                100% {
-                    opacity: 1;
-                    -moz-transform: translate(0%, 50%);
-                }
-            }
 
             @keyframes slide {
                 100% {
@@ -143,7 +130,6 @@
                 100% {
                     opacity: 1;
                     transform: translate(50%, 100%);
-                    -moz-transform: translate(50%, 100%);
                 }
             }
 
@@ -162,43 +148,6 @@
                     transform: scale(1);
                 }
             }
-            /* iPhone6 is 375px wide */
-
-            /*@media (min-width: 375px) {
-                @keyframes fade-in-from-none {
-                    0% {
-                        display: none;
-                        opacity: 0;
-                        transform: scale(0.8);
-                    }
-                    1% {
-                        display: block;
-                    }
-                    100% {
-                        display: block;
-                        opacity: 1;
-                        transform: scale(1.2);
-                    }
-                }
-            }*/
-            /* iPhone6+ is 414px wide */
-/*
-            @media (min-width: 414px) {
-                employee-view {
-                    margin: 1.02rem;
-                    margin-top: 0;
-                    margin-left: 0;
-                }
-            }*/
-            /* Slightly more than an iPhone6+ */
-
-            /*@media(min-width: 514px) {
-                employee-view {
-                    margin: 0.34rem;
-                    margin-top: 0;
-                    margin-left: 0;
-                }
-            }*/
             /* For 1080p apewall */
             /* Slightly more than the maxwidth iframe on http://prototype.apegroup.com/about/ */
 
