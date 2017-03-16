@@ -1,0 +1,35 @@
+<dom-module id="wall-picker">
+
+    <link rel="import" href="wall-picker-style.html">
+
+    <template>
+        <style include="wall-picker-style"></style>
+
+        <content></content>
+
+        <main class="employees">
+            <!--<header>
+                Walls
+            </header>-->
+
+            <template is="dom-repeat" items="{{toArrayAndKeysToIds(walls)}}" as="wall">
+                <div class="wall" on-tap="goToWall" wall-id="[[wall.$id]]">
+                    <div>
+                    [[wall.description]]
+                    </div>
+                    <div class="member-count">
+                        [[getMemberCount(wall)]]<utf-to-twemoji class="user-symbol">👤</utf-to-twemoji>
+                    </div>
+                </div>
+            </template>
+
+            <div class="wall btn-add-wall">
+                <div>+</div>
+            </div>
+        </main>
+        
+    </template>
+
+    <script src="wall-picker.js"></script>
+
+</dom-module>

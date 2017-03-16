@@ -1,0 +1,32 @@
+<dom-module id="mobile-view">
+    <link rel="import" href="mobile-view-style.html">
+
+
+    <template>
+        <style include="shared-config"></style>
+        <style include="employee-view-style"></style>
+
+        <style include="mobile-view-style"></style>
+
+        <!--exit btn-->
+        <close-icon class="exit" on-tap="hideContent" hide$="[[exit]]"> </close-icon>
+
+        <img class="employee-card__avatar" src=" [[employee.avatar_url]]" />
+        <h3> [[employee.firstname]] [[employee.lastname]]</h3>
+
+        <h4><span class="red" style$="color: {{myColor}}; background:{{myColor}}; border-radius:50%;">O</span> [[employee.title]]</h4>
+
+        <div class="mobileIcons" id="mobileIcons">
+            <mobile-icons class="flex-item item1" on-tap="phoneCall"> </mobile-icons> [[employee.phone]] &nbsp&nbsp
+            <mail-icon class="flex-item item2" on-tap="mailTo"> </mail-icon> &nbsp&nbsp
+            <slack-icon class="flex-item item3" on-tap="employeeSlack"> </slack-icon>
+            &nbsp&nbsp
+            <poke-icon class="flex-item item4"> </poke-icon>
+
+        </div>
+
+
+
+    </template>
+    <script src="mobile-wall.js"></script>
+</dom-module>

@@ -1,0 +1,32 @@
+{
+  "name": "ikea-activitywall",
+  "description": "Polymer web application. Hand coded in Hornstull, Stockholm, Sweden.",
+  "main": "index.html",
+  "authors": [],
+  "license": "Aesthetically Pleasing Electronics © 2016 All rights reserved.",
+  "moduleType": [
+    "es6"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.5.0",
+    "page": "page.js#^1.7.1",
+    "es6-promise": "^3.2.2",
+    "system.js": "^0.19.29",
+    "app-localize-behavior": "PolymerElements/app-localize-behavior#^0.9.1",
+    "svgxuse": "^1.1.17",
+    "intl": "^1.2.4",
+    "app-route": "PolymerElements/app-route#^0.9.2",
+    "iron-pages": "PolymerElements/iron-pages#^1.0.8",
+    "polymerfire": "^0.9.4",
+    "dateformat": "^0.4.1"
+  }
+}

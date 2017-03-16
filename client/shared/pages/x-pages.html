@@ -1,0 +1,90 @@
+<dom-module id="x-pages">
+
+    <template>
+        <style>
+        </style>
+        <content></content>
+    </template>
+
+    <script>
+        class XPages {
+
+            beforeRegister() {
+                this.is = `x-pages`;
+                this.properties = {
+                    selected: {
+                        type: String,
+                        observer: `_selectedChanged`
+                    },
+                    restamp: {
+                        type: Boolean
+                    },
+                    autoScroll: {
+                        type: Boolean,
+                        value: false
+                    },
+                    _wasSelectedChecked: {
+                        type: Boolean
+                    }
+                };
+            }
+
+            created() {
+                if(!this._wasSelectedChecked) {
+                    var lightDOMChildren = Polymer.dom(this).querySelectorAll(`*`);
+                    lightDOMChildren.map( (child) => {
+                        if(Node.ELEMENT_NODE === child.nodeType) {
+                            child.style.display = `none`;
+                        }
+                    });
+                }
+            }
+
+            _selectedChanged(newValue, oldValue) {
+                this._wasSelectedChecked = true;
+                this._autoScrollOnPageChange();
+
+                var lightDOMContainer = Polymer.dom(this);
+                var lightDOMChildren = lightDOMContainer.querySelectorAll(`*`);
+
+                if(this.restamp){
+                    lightDOMChildren.map( (child) => {
+                        if(this._isSelected(child)) {
+                            Polymer.dom(this).appendChild(child);
+                        } else {
+                            Polymer.dom(this).removeChild(child);
+                        }
+                    });
+                } else {
+                    lightDOMChildren.map( (child) => {
+                        if(this._isSelected(child)) {
+                            child.style.display = `flex`;
+                        } else {
+                            child.style.display = `none`;
+                        }
+                    });
+                }
+            }
+
+            _autoScrollOnPageChange() {
+                if (this.autoScroll) {
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            _isSelected(child) {
+                if(child && child.getAttribute(`selected`)) {
+                    let childAttributeSelected = child.getAttribute(`selected`);
+                    const selectedAttributeMatches = childAttributeSelected && childAttributeSelected.match(this.selected);
+                   //Throws an error, so commented toLowerCase function
+                     const tagNameMatches = child.tagName.toLowerCase() === this.selected;
+                    return selectedAttributeMatches || tagNameMatches;
+                }
+                return false;
+            }
+        }
+
+        Polymer(XPages);
+    </script>
+
+</dom-module>

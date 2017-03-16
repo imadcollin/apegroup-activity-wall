@@ -1,0 +1,56 @@
+<dom-module id="team-wall">
+
+    <link rel="import" href="shared-wall-style.html">
+    <link rel="import" href="team-wall-style.html">
+
+    <template>
+        <style include="team-wall-style"></style>
+        <style include="shared-wall-style"></style>
+
+        <header>
+            <ape-icon class="foreground"></ape-icon>
+            [[wallModel.description]]
+        </header>
+
+        <h2>
+            At the Office
+        </h2>
+        <div class="employee-list employee-list--at-office">
+            <template is="dom-repeat" items="{{employeesAtOffice}}" as="employee">
+                <employee-view
+                    locations="[[locations]]"
+                    availabilities="[[availabilities]]"
+                    employee="[[employee]]"
+                    calendar-events="[[calendarEvents]]"
+                    expanded></employee-view>
+            </template>
+        </div>
+
+        <h2>
+            Out of Office
+        </h2>
+        <div class="employee-list employee-list--out-of-office">
+            <template is="dom-repeat" items="{{employeesOutOfOffice}}" as="employee">
+                <employee-view
+                    locations="[[locations]]"
+                    availabilities="[[availabilities]]"
+                    employee="[[employee]]"
+                    calendar-events="[[calendarEvents]]"
+                    expanded></employee-view>
+            </template>
+
+            <!--<dummy-employee style="width: 5rem; height: 7.3rem; border: 0.17rem dashed gray;"></dummy-employee>-->
+        </div>
+
+        <wall-message-view
+            wall-heading="[[wallModel.description]]"
+            message="[[wallModel.message]]"
+            slack-ids="[[slackIds]]"
+            employees="[[allEmployees]]">
+        </wall-message-view>
+        
+    </template>
+
+    <script src="team-wall.js"></script>
+
+</dom-module>

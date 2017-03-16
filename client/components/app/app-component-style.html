@@ -1,0 +1,48 @@
+<dom-module id="app-component-style">
+    <template>
+        <style include="shared-config"></style>
+        <style>
+            @keyframes fade {
+                from {
+                    opacity: 0;
+                }
+            }
+
+            :host {
+                --foreground-color: var(--activitywall-orange);
+                --background: var(--activitywall-white);
+                --background-size: 200% 200%;
+                --animation--background-gradient: gradientAnimation 15s ease infinite;
+
+                display: block;
+                min-height: 100%;
+                overflow: hidden;
+
+                background: var(--background);
+                color: var(--foreground-color);
+            }
+
+            /* This colors the apegroup icon (and in the future, other things with the foreground class) */
+            ::content .foreground {
+                fill: var(--foreground-color);
+                color: var(--foreground-color);
+            }
+
+            /*
+                Animations
+            */
+
+            @keyframes gradientAnimation {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                } 
+            }
+        </style>
+    </template>
+</dom-module>

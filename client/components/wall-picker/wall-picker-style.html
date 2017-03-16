@@ -1,0 +1,97 @@
+<dom-module id="wall-picker-style">
+    <template>
+        <style include="shared-config"></style>
+        <!-- TODO 24 Aug 2016: Needs refactoring, this CSS was created with the mindset that it would be redone -->
+        <style>
+            :host {
+                flex-grow: 1;
+                overflow-y: auto;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                box-sizing: border-box;
+                padding: 1.5rem 3rem;
+
+                /* Default font */
+                @apply(--text-default);
+                font-weight: 700;
+                background-color: var(--activitywall-white);
+            }
+
+            header {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                width: 100%;
+                text-align: center;
+                font-size: 2.5rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                
+            }
+
+            utf-to-twemoji.user-symbol {
+                font-size: 1.5em;
+            }
+
+            .wall {
+                border-radius: 0.5rem;
+                line-height: 1.8em;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                @apply(--text-heading--medium);
+
+                box-sizing: border-box;
+                padding: 3rem 2rem;
+                margin: 1.7rem;
+                
+                height: 7.5rem;
+                width: 27.5rem;
+
+                font-size: 1.75rem;
+                text-align: center;
+                text-transform: lowercase;
+
+                background-color: rgba(255,255,255,0.84);
+                box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.3);
+                cursor: pointer;
+                color: #777;
+                border: 0.1rem solid rgba(0,0,0,0);
+            }
+
+            .wall:hover {
+                background-color: #555;
+                border: 0.1rem solid rgba(0,0,0,0.8);
+                color: white;
+                box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.3);
+            }
+
+            .btn-add-wall {
+                cursor: not-allowed;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 5rem;
+                
+                padding: 0;
+                background-color: rgba(255,255,255,0.84);
+                color: rgba(0,0,0,0.2);
+                box-shadow: none;
+            }
+
+            .btn-add-wall > div {
+                margin-top: -0.5rem;
+            }
+
+            .member-count {
+                display: flex;
+            }
+
+        </style>
+    </template>
+</dom-module>

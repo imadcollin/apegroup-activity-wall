@@ -1,0 +1,36 @@
+<dom-module id="close-icon">
+
+    <template>
+        <style>
+            :host {
+                display: flex;
+                height: 3em;
+                width: 3em;
+            }
+
+            #icon {
+                display: flex;
+                width: 3em;
+                font-size: xx-small;
+            }
+        </style>
+        <svg id="icon" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+                <path d="M23 46c12.703 0 23-10.297 23-23S35.703 0 23 0 0 10.297 0 23s10.297 23 23 23z" id="a" />
+                <mask id="b" x="0" y="0" width="46" height="46" fill="#fff">
+                    <use xlink:href="#a" />
+                </mask>
+            </defs>
+            <g fill="none" fill-rule="evenodd">
+                <use mask="url(#b)" xlink:href="#a" stroke="#222630" stroke-width="4" />
+                <g fill="#222630">
+                    <path d="M18.05 16.636L29.364 27.95l-1.414 1.414L16.636 18.05z" />
+                    <path d="M16.636 27.95L27.95 16.636l1.414 1.414L18.05 29.364z" />
+                </g>
+            </g>
+        </svg>
+    </template>
+
+    <script src="close-icon.js"></script>
+
+</dom-module>

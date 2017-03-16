@@ -1,0 +1,118 @@
+<dom-module id="app-component">
+
+    <link rel="import" href="app-component-style.html">
+
+    <template>
+
+        <style include="app-component-style"></style>
+
+        <firebase-app
+            name="[[config.firebase.name]]"
+            api-key="[[config.firebase.apiKey]]"
+            auth-domain="[[config.firebase.authDomain]]"
+            database-url="[[config.firebase.databaseUrl]]">
+        </firebase-app>
+
+        <firebase-auth id="jsFirebaseAuth"
+            app-name="[[config.firebase.name]]"
+            provider="[[config.firebase.auth.provider]]"
+            on-error="handleFirebaseAuthError">
+        </firebase-auth>
+
+        <firebase-document id="jsFirebaseWallsDocument"
+            app-name="[[config.firebase.name]]"
+            path="[[config.firebase.paths.walls]]"
+            data="{{walls}}">
+        </firebase-document>
+
+        <firebase-document
+            app-name="[[config.firebase.name]]"
+            path="[[getSelectedWallFirebasePath(subrouteData.pathSection)]]"
+            data="{{selectedWall}}">
+        </firebase-document>
+
+        <firebase-document
+            app-name="[[config.firebase.name]]"
+            path="[[config.firebase.paths.availabilities]]"
+            data="{{availabilities}}">
+        </firebase-document>
+
+        <firebase-document
+            app-name="[[config.firebase.name]]"
+            path="[[config.firebase.paths.locations]]"
+            data="{{locations}}">
+        </firebase-document>
+
+        <firebase-document
+            app-name="[[config.firebase.name]]"
+            path="[[config.firebase.paths.employees]]"
+            data="{{employees}}">
+        </firebase-document>
+
+        <firebase-document
+            app-name="[[config.firebase.name]]"
+            path="[[config.firebase.paths.calendarEvents]]"
+            data="{{calendarEvents}}">
+        </firebase-document>
+
+        <firebase-document
+            app-name="[[config.firebase.name]]"
+            path="[[config.firebase.paths.slack]]"
+            data="{{slackIds}}">
+        </firebase-document>
+
+        <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>
+        <app-route
+            route="{{route}}"
+            pattern="/:pathSection"
+            data="{{routeData}}"
+            tail="{{subroute}}">
+        </app-route>
+        <app-route
+            route="{{subroute}}"
+            pattern="/:pathSection"
+            data="{{subrouteData}}">
+        </app-route>
+
+        <template is="dom-if" if="{{loadingStatus}}">
+
+            <x-pages selected="[[routeData.pathSection]]" main>
+                
+                <wall-picker selected="pick"
+                    walls="[[walls]]">
+                </wall-picker>
+
+            </x-pages>
+            <x-pages selected="[[selectedWall.type]]" main>
+
+                <org-wall
+                    selected="org public"
+                    wall-model="[[selectedWall]]"
+                    all-employees="[[employees]]"
+                    employees="[[employeesOnSelectedWall]]"
+                    availabilities="[[availabilities]]"
+                    locations="[[locations]]"
+                    calendar-events="[[calendarEvents]]"
+                    slack-ids="[[slackIds]]"></org-wall>
+
+                <team-wall
+                    selected="team"
+                    wall-model="[[selectedWall]]"
+                    all-employees="[[employees]]"
+                    employees="[[employeesOnSelectedWall]]"
+                    availabilities="[[availabilities]]"
+                    locations="[[locations]]"
+                    calendar-events="[[calendarEvents]]"
+                    slack-ids="[[slackIds]]"></team-wall>
+
+            </x-pages>
+
+        </template>
+
+        <content></content>
+
+    </template>
+
+    <script src="app-component.js"></script>
+
+</dom-module>

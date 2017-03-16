@@ -1,0 +1,64 @@
+<dom-module id="utf-to-twemoji">
+
+    <template>
+    <style> 
+        :host {
+            position: relative;
+            display: flex;
+            height: 1em;
+            width: 1em;
+
+            --translate-to-absolute-center: {
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            };
+        }
+
+        :host[no-emoji] {
+            display: none;
+        }
+
+        :host[no-height] {
+            height: 0;
+        }
+
+        :host[cast-shadow] .shadow {
+            position: absolute;
+            @apply(--translate-to-absolute-center);
+
+            width: 0.5em;
+            height: 0.5em;
+            
+            box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.9);
+        }
+
+        /* Make emoji same size as surrounding text. 
+           Source: https://github.com/twitter/twemoji#tips */
+        :host ::content img.emoji {
+            /* Absolute to display above absolute shadow */
+            position: absolute;
+
+            height: 1em;
+            width: 1em;
+            margin: 0 .05em 0 .1em;
+            bottom: -0.1em;
+        }
+
+    </style>
+
+        <div style="display: none">
+            <content>
+            </content>
+        </div>
+        <template is="dom-if" if="{{emoji}}">
+            <div class="shadow">
+            </div>
+        </template>
+        
+    </template>
+
+    <script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.1.2"></script>
+    <script src="utf-to-twemoji.js"></script>
+
+</dom-module>

@@ -1,0 +1,164 @@
+<dom-module id="text-element">
+
+    <template>
+        <style include="shared-config"></style>
+        <style>
+           :host {
+               /* Default typography */
+               display: block;
+               margin: 0;
+               padding: 0;
+               font-style: normal;
+               font-size: var(--font-size-small);
+               color: var(--dark-grey-color, black);
+               line-height: var(--line-height-default);
+               font-family: var(--font-paragraph);
+               font-weight: var(--font-weight-normal);
+               margin-bottom: @apply(--md-margin-bottom);
+               -webkit-font-smoothing: antialiased;
+               -moz-osx-font-smoothing: grayscale;
+           }
+           /* Types */
+           :host([h1]) {
+               color: var(--dark-green-color, black);
+               font-family: var(--font-heading);
+               font-size: var(--font-size-huge);
+               font-weight: var(--font-weight-normal);
+               line-height: var(--line-height-normal);
+           }
+           :host([h2]) {
+               color: var(--dark-green-color, black);
+               font-family: var(--font-paragraph);
+               font-size: var(--font-size-xlarge);
+               font-weight: var(--font-weight-bold);
+               line-height: var(--line-height-normal);
+           }
+           :host([h3]) {
+               color: var(--dark-green-color, black);
+               font-family: var(--font-heading);
+               font-size: var(--font-size-large);
+               font-weight: var(--font-weight-normal);
+           }
+           :host([preamble]) {
+               font-family: var(--font-paragraph);
+               color: var(--grey-color);
+               font-size: var(--font-size-medium);
+               font-weight: var(--font-weight-normal);
+               margin-bottom: @apply(--xxl-margin-bottom);
+           }
+           :host[bold] {
+               font-weight: var(--font-weight-bold);
+           }
+           :host([legal]) {
+               font-family: var(--font-paragraph);
+               color: var(--grey-color);
+               font-size: var(--font-size-small);
+               font-weight: var(--font-weight-normal);
+               margin-bottom: 4.8rem;
+            }
+           :host([label]) {
+               font-family: var(--font-paragraph);
+               font-weight: var(--font-weight-bold);
+               font-size: var(--font-size-medium);
+               line-height: var(--line-height-default);
+               color: var(--black-color, black);
+           }
+           :host([header]) {
+               color: black;
+               font-size: var(--font-size-huge);
+               font-weight: var(--font-weight-normal);
+               background-color: white;
+               padding: 1em 1em;
+           }
+           :host([loading]) {
+               color: var(--secondary-color, black);
+               font-size: var(--font-size-small);
+               font-weight: var(--font-weight-bold);
+               text-transform: uppercase;
+               padding: 1em 1em;
+           }
+           :host([banner]) {
+               color: var(--dark-grey-color, black);
+               font-family: var(--font-heading);
+               font-size: var(--font-size-wallpaper);
+               font-weight: var(--font-weight-normal);
+               line-height: 1.7;
+               background-color: rgba(255,255,255,0.85);
+               color: #222;
+               display: inline;
+               padding: 0.5rem 0.8rem;
+               box-decoration-break: clone;
+               margin-bottom: 0;
+           }
+            :host([table]) {
+               font-family: var(--font-paragraph);
+               color: var(--grey-color);
+               font-size: var(--font-size-xsmall);
+               font-weight: var(--font-weight-normal);
+           }
+            :host([footer])  {
+                border-top: 1px solid var(--lighter-grey-color, black);;
+                display: block;
+                padding: 1em 0 0;
+                margin-bottom: 0;
+            }
+            :host([highlight]) {
+                text-transform: uppercase;
+                color:  var(--dark-green-color, black);
+                font-size: var(--font-size-small);
+                font-weight: var(--font-weight-bold);
+                margin-bottom: 0;
+                text-align: center;
+            }
+            :host([highlight][large]) {
+                font-size: var(--font-size-xlarge);
+            }
+            :host([price]) {
+                margin: 0;
+                padding: 0 0.1em 0.1em 0.1em;
+                color: var(--dark-green-color, black);
+                font-size: 4em;
+                line-height: 1;
+                font-family: var(--font-paragraph);
+                font-weight: var(--font-weight-bold);
+                margin-bottom: 0;
+            }
+            :host([contract]) {
+               font-family: var(--font-paragraph);
+               color: var(--grey-color);
+               font-size: var(--font-size-small);
+               font-weight: var(--font-weight-normal);
+               text-transform: uppercase;
+               margin-bottom: 0;
+            }
+
+            :host([detail]) {
+               font-family: var(--font-paragraph);
+               color: var(--blue-color);
+               font-size: var(--font-size-small);
+               font-weight: var(--font-weight-normal);
+               margin-bottom: 0;
+            }
+
+            :host([margin-none]) {
+                margin-bottom: 0;
+            }
+
+            :host([align~="center"]) {
+                text-align: center;
+            }
+            :host([align~="right"]) {
+                text-align: right;
+            }
+
+       </style>
+       <content></content>
+   </template>
+
+    <script>
+        Polymer({
+            is: "text-element"
+        });
+    </script>
+
+</dom-module>

@@ -1,0 +1,72 @@
+<dom-module id="shared-wall-style">
+    <template>
+        <style include="shared-config"></style>
+        <style>
+            :host {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                /*overflow-y: auto;*/
+                margin-left: auto;
+                margin-right: auto;
+                @apply(--text-default);
+            }
+            /*header > ape-icon {
+                font-size: 0.75em;
+                margin-right: 0.5em;
+                margin-bottom: 0.28em;
+            }*/
+
+            .employee-list {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                margin-left: 2%;
+                margin-right: 1%;
+            }
+            /* iPhone 4 and 5 is 320px wide */
+
+
+            @media (min-width: 320px) {
+                :host {
+                    padding: 0rem;
+                    padding-bottom: 0;
+                }
+                .employee-list {
+                    padding-left: 8%;
+                }
+            }
+            /* iPhone6 is 375px wide */
+
+            @media (min-width: 375px) {
+                :host {
+                    padding: 0px;
+                    padding-bottom: 0;
+                }
+                .employee-list {
+                    padding-left: 10%;
+                }
+            }
+            /* Max width on http://prototype.apegroup.com/about/ */
+
+            @media (min-width: 1155px) {
+                :host {
+                    padding: calc(var(--baseline) * 1.5);
+                    padding-bottom: 5%;
+                }
+                .employee-list {
+                    padding-left: 0;
+                }
+            }
+            /* 1080p like the Apegroup org wall*/
+
+            @media (min-width: 1920px) {
+                :host {
+                    padding: calc(var(--baseline) * 2);
+                    padding-bottom: 0;
+                }
+            }
+        </style>
+    </template>
+</dom-module>

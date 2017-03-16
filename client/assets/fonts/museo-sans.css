@@ -1,0 +1,56 @@
+
+/* 300 */
+@font-face {
+    font-family: "museo-sans";
+    src: url("/assets/fonts/museo-sans-300.otf");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "museo-sans";
+    src: url("/assets/fonts/museo-sans-300-italic.otf");
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* 500 */
+@font-face {
+    font-family: "museo-sans";
+    src: url("/assets/fonts/museo-sans-500.otf");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "museo-sans";
+    src: url("/assets/fonts/museo-sans-500-italic.otf");
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* 700 */
+@font-face {
+    font-family: "museo-sans";
+    src: url("/assets/fonts/museo-sans-700.otf");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: "museo-sans";
+    src: url("/assets/fonts/museo-sans-700-italic.otf");
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* 900 */
+@font-face {
+    font-family: "museo-sans";
+    src: url("/assets/fonts/museo-sans-900.otf");
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: "museo-sans";
+    src: url("/assets/fonts/museo-sans-900-italic.otf");
+    font-weight: 900;
+    font-style: italic;
+}

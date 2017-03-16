@@ -1,0 +1,62 @@
+<dom-module id="shared-config">
+    <template>
+        <style>
+            :host {
+                --baseline: 0.9rem;
+
+                --window-edge-spacing: calc(var(--baseline) * 2);
+
+                /* Colors */
+                --background-gray: rgba(55,55,55);
+                --background-gray--light: #474643;
+                --transparent-shade: rgba(0, 0, 0, 0.5);
+                --activitywall-yellow: #fcd530;
+                --activitywall-orange: #ff5500;
+                --activitywall-green: #41bb5a;
+                --activitywall-red: #ff0000;
+                --activitywall-black: #000000;
+                --activitywall-white: #ffffff;
+                --activitywall-gray: #777777;
+                --apewall-info-slate: #445b61;
+                --apegroup-blue-dark: #373d6d;
+                --apegroup-purple-dark: #336;
+                --apegroup-turqoise: #3cc;
+                --employee-panel-gray: #383838;
+
+                /*--font-weight-bold: 700;
+                --font-weight-normal: 400;
+                --font-size-wallpaper: 4.8rem;
+                --font-size-huge: 4.0rem;
+                --font-size-xlarge: 2.4rem;
+                --font-size-large: 2rem;
+                --font-size-medium: 1.9rem;
+                --font-size-xsmall: 1.4rem;
+                --font-heading: 'verdana', sans-serif;
+                --font-paragraph: 'verdana', sans-serif;
+                --line-height-default: 1.5;
+                --line-height-normal: 1.1;
+                --margin-bottom-medium: 1.5rem;
+                --margin-bottom-small: 1.0rem;*/
+
+                --font-size--xxlarge: 2.3rem;
+                --font-size--xlarge: 1.2rem;
+                --font-size--medium: 0.9rem;
+                --font-size--small: 0.6rem;
+                --font-size--xsmall: 0.43rem;
+                --font-size--xxsmall: 0.35rem;
+
+                /* Defaults */
+                --text-default: {
+                    font-size: var(--font-size--small);
+                    font-family: 'museo-sans', 'verdana', sans-serif;
+                    font-weight: 300;
+                    font-style: normal;
+                    letter-spacing: 0.02rem;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                };
+
+            }
+        </style>
+    </template>
+</dom-module>

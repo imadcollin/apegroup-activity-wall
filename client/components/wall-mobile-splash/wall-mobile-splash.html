@@ -1,0 +1,79 @@
+<dom-module id="wall-mobile-splash">
+
+
+    <template>
+        <style include="shared-config"></style>
+
+        <style>
+            :host {
+                display: flex;
+                position: relative;
+            }
+            /*:host svg {
+                width: 100%;
+                height: 100%;
+                animation: arc-round 1200ms infinite cubic-bezier(0.600, 0.000, 0.400, 1.000);
+            }*/
+
+            :host svg {
+                width: 100%;
+                height: 100%;
+                -webkit-animation: fadeinout 7s linear 1 forwards;
+                animation: fadeinout 4s linear 1 forwards;
+            }
+
+            @-webkit-keyframes fadeinout {
+                0% {
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+
+            @keyframes fadeinout {
+                0% {
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+            /*:host .border-empty {
+                fill: var(--disabled-blue-color, white);
+            }
+
+            @keyframes arc-round {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }*/
+        </style>
+        <svg id="icon" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.04 85.04">
+            <title>
+                apegroup_logo
+            </title>
+            <g id="Parts">
+                <g id="Symbol_red" data-name="Symbol red">
+                    <g id="Imported-Layers">
+                        <path id="Fill-1" class="svg-icon" d="M37.18 50.4c0 3.29 1.31 4.76 3.28 4.76a5.87 5.87 0 0 0 4.19-2.05v-9l-2.79.25c-3 .25-4.68 2.13-4.68 6" />
+                        <path id="Fill-2" class="svg-icon" d="M0 85h85V0H0v85zm62.15-22.69H46.46l-1-3.61c-1.63 2.21-4.26 4.92-10.46 4.92-6.32 0-12.16-2.38-12.16-11.58 0-10.51 8.13-13.47 17.66-13.88l4.15-.16v-3c0-3.7-1.23-5-4.68-5a23.7 23.7 0 0 0-6.9 1.48l-1 4.93h-5.65V26.08A51.2 51.2 0 0 1 45 22.39c8.87 0 13.47 3.94 13.47 12.4v21.44l3.7.82v5.26z" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </template>
+    <script src="wall-mobile-splash.js">
+
+    </script>
+
+</dom-module>

@@ -1,0 +1,34 @@
+<dom-module id="employee-view">
+
+    <link rel="import" href="employee-view-style.html">
+
+    <template>
+        <style include="employee-view-style"></style>
+
+        <firebase-document app-name="activitywall" path="/calendar/events/[[employee.$key]]" data="{{employeeCalendarEvents}}">
+        </firebase-document>
+
+        <template is="dom-if" if="[[expanded]]">
+            <div class="employee-info">
+                <div class="employee-info__status">
+                    <div class="employee-info__status__led">
+                    </div>
+
+                    <div class="employee-info__bottom__emoji">
+                        <utf-to-twemoji no-height>[[employee.feeling.emoji_char]]</utf-to-twemoji>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <div class="employee-card">
+            <img class="employee-card__avatar" src="[[avatarUrl]]" />
+
+            <div class="js-employee-card__name">
+                <span class="dotForAvaliable" hide$=[[showDot]]>O </span>[[employee.firstname]] [[employee.lastname]]
+            </div>
+        </div>
+
+    </template>
+    <script src="employee-view.js"></script>
+</dom-module>

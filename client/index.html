@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Activity Wall</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <base href="/">
+
+    <script src="assets/libs/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="assets/libs/polymer/polymer.html">
+
+    <script src="assets/libs/page/page.js"></script>
+    <script src="assets/libs/es6-promise/es6-promise.min.js"></script>
+    <script src="assets/libs/svgxuse/svgxuse.js"></script>
+    <script src="assets/libs/intl/dist/Intl.min.js"></script>
+    <script src="assets/libs/intl/locale-data/jsonp/se-SE.js"></script>
+    <script src="assets/libs/dateformat/dist/dateformat.js"></script>
+
+    <link rel="stylesheet" href="assets/fonts/museo-sans.css">
+
+    <script src="shared/enum-availability/enum-availability.js"></script>
+    <script src="shared/enum-location/enum-location.js"></script>
+    <script src="shared/util-strings/util-strings.js"></script>
+
+    <link rel="import" href="shared/loader/x-loader.html">
+    <link rel="import" href="shared/pages/x-pages.html">
+    <link rel="import" href="shared/shared-config/shared-config.html">
+    <link rel="import" href="shared/utilities/x-utilities.html">
+
+    <link rel="import" href="assets/libs/app-localize-behavior/app-localize-behavior.html">
+    <link rel="import" href="assets/libs/app-route/app-location.html">
+    <link rel="import" href="assets/libs/app-route/app-route.html">
+    <link rel="import" href="assets/libs/iron-pages/iron-pages.html">
+    <link rel="import" href="assets/libs/polymerfire/polymerfire.html">
+
+    <link rel="import" href="elements/ape-icon/ape-icon.html">
+    <link rel="import" href="elements/text/text-element.html">
+    <link rel="import" href="elements/spinner/spinner-element.html">
+    <link rel="import" href="elements/x-icon/x-icon.html">
+
+    <link rel="import" href="components/utf-to-twemoji/utf-to-twemoji.html">
+    <link rel="import" href="components/wall-picker/wall-picker.html">
+    <link rel="import" href="components/employee-view/employee-view.html">
+    <link rel="import" href="components/wall-message-view/wall-message-view.html">
+    <link rel="import" href="components/wall-view/wall-behaviour.html">
+    <link rel="import" href="components/wall-view/org-wall.html">
+    <link rel="import" href="components/wall-view/team-wall.html">
+    <link rel="import" href="components/datetime-view/datetime-view.html">
+
+    <link rel="import" href="components/app/app-component.html">
+    <link rel="import" href="components/wall-mobile-splash/wall-mobile-splash.html">
+    <link rel="import" href="components/mobile-view/mobile-view.html">
+    <link rel="import" href="elements/mobile-icons/search-icon.html">
+    <link rel="import" href="elements/mobile-icons/mobile-icons.html">
+    <link rel="import" href="elements/mobile-icons/mail-icon.html">
+    <link rel="import" href="elements/mobile-icons/slack-icon.html">
+    <link rel="import" href="elements/mobile-icons/close-icon.html">
+    <link rel="import" href="elements/mobile-icons/poke-icon.html">
+
+
+
+    <style>
+        html {
+            margin: 0;
+            padding: 0;
+            /* 125% means 1rem is 20px (16 * 1.25 = 20) */
+            /* 62.5% means 1rem is 10px (16 * 0.625 = 10) */
+            font-size: 125%;
+            height: 100%;
+            background: #fff;
+        }
+
+        html[wall-type~="org"],
+        html[wall-type~="public"] {
+            font-size: 117%;
+            /* Makes Apegroup employees fit nicely */
+        }
+
+        html[wall-type~="team"] {
+            font-size: 190%;
+        }
+
+        body {
+            display: block;
+            margin: 0;
+            height: 100%;
+            min-width: 300px;
+            min-height: 100%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        [generation~="modern"] nosupport {
+            display: none;
+        }
+
+        x-loader {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        /*spinner {
+            border: .5em solid rgb(30, 30, 30);
+            border-right: .5em solid white;
+            width: 8em;
+            height: 8em;
+            transform: translateZ(0);
+            animation: spin 1200ms infinite linear;
+            backface-visibility: hidden;
+            border-radius: 50%;
+            margin-bottom: 1.2em;
+        }*/
+
+        spinner-text {
+            color: black;
+            font-size: 1.7em;
+            font-weight: 700;
+            font-family: 'verdana', sans-serif;
+        }
+        /*@keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }*/
+
+        noscript,
+        nosupport {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        noscript,
+        nosupport h1 {
+            color: white;
+            font-family: 'verdana', sans-serif;
+            font-size: 4.0rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        noscript,
+        nosupport p {
+            font-family: 'verdana', sans-serif;
+            color: white;
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        /* Like the maxwidth -1 breakpoint on http://prototype.apegroup.com/about/ */
+
+        @media(max-width: 725px) {
+            html[wall-type~="org"],
+            html[wall-type~="public"] {
+                font-size: 150%;
+            }
+        }
+
+        @media(min-width: 925px) {
+            html[wall-type~="org"],
+            html[wall-type~="public"] {
+                font-size: 117%;
+            }
+        }
+        /* Like the maxwidth breakpoint on http://prototype.apegroup.com/about/ */
+
+        @media(min-width: 1170px) {
+            html[wall-type~="org"],
+            html[wall-type~="public"] {
+                font-size: 117%;
+            }
+        }
+        /* Slightly more than the maxwidth iframe on http://prototype.apegroup.com/about/ */
+
+        @media (min-width: 1300px) {
+            html[wall-type~="org"],
+            html[wall-type~="public"] {
+                font-size: 117%;
+                /* Makes Apegroup employees fit nicely */
+            }
+        }
+    </style>
+
+</head>
+
+<body browser="{{browser}}" os="{{os}}" browser-version="{{browserVersion}}" generation="modern">
+    <noscript>
+        <h1>JavaScript är avaktiverat!</h1>
+        <p>Var god aktivera JavaScript i din webläsares inställningar.</p>
+    </noscript>
+    <nosupport>
+        <h1>Din webbläsare är för gammal!</h1>
+        <p>Var god uppdatera din webläsare.</p>
+    </nosupport>
+    <app-component>
+        <x-loader>
+            <!--<spinner></spinner>-->
+            <wall-mobile-splash> </wall-mobile-splash>
+            <!--<spinner-text>Laddar Ape wall...</spinner-text>-->
+        </x-loader>
+    </app-component>
+</body>
+
+</html>

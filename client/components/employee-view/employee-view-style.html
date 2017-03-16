@@ -1,0 +1,156 @@
+<dom-module id="employee-view-style">
+    <template>
+        <style include="shared-config"></style>
+        <style>
+            :host {
+                --avatar-size: 6rem;
+                --name-plate--height: 1.15rem;
+                --card-height: calc(var(--avatar-size) + var(--name-plate--height));
+                --color--status: #0f0;
+                --color--text-status: #f00;
+                --card-shadow--large: 0 0.49rem 0.7rem 0rem rgba(0, 0, 0, 0.25);
+                --card-shadow--small: 0;
+                --card-shadow: var(--card-shadow--large);
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: flex-start;
+            }
+
+            [hide] {
+                display: none;
+            }
+
+            .relative-position {
+                position: relative;
+                width: 100%;
+                height: 0;
+            }
+
+            .employee-card {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                box-shadow: var(--card-shadow);
+            }
+
+            .employee-card__avatar {
+                width: var(--avatar-size);
+                height: var(--avatar-size);
+                background-color: #4e4e4e;
+            }
+
+            .employee-card__emoji {
+                position: absolute;
+                top: -0.9rem;
+                right: 0.4rem;
+                font-size: 1.5rem;
+            }
+
+            .js-employee-card__name {
+                box-sizing: border-box;
+                height: var(--name-plate--height);
+                padding-top: 0;
+                padding-right: 0;
+                overflow: hidden;
+                text-align: left;
+                /*font-weight: 900;*/
+                text-transform: capitalize;
+                color: var(--color--text-status);
+            }
+
+            .employee-card__name__title {
+                font-size: var(--font-size--xxsmall);
+                font-weight: normal;
+                text-transform: none;
+            }
+            /*
+             * __ Employee Info __
+             * Employee-info is the box containing more info about the employee.
+             */
+
+            .employee-info {
+                display: flex;
+                flex-direction: column;
+                box-sizing: border-box;
+                min-height: var(--card-height);
+                color: var(--color--text-status);
+                box-shadow: var(--card-shadow);
+            }
+
+            :host[off-the-grid] .employee-info {
+                background-color: #white;
+            }
+
+            .employee-info__bottom {
+                flex-grow: 1;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                margin-bottom: calc(var(--baseline) * 0.7);
+            }
+
+            .employee-info__status {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                margin-bottom: var(--baseline);
+                font-size: var(--font-size--xsmall);
+                font-weight: normal;
+                text-transform: uppercase;
+                line-height: 0.8rem;
+            }
+
+            .employee-info__status__text:before {
+                content: "• ";
+                position: relative;
+                top: 0.11em;
+                font-size: 2em;
+                color: var(--color--status);
+            }
+
+            .employee-info__message {
+                position: relative;
+                flex-grow: 1;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin-bottom: var(--baseline);
+                font-size: var(--font-size--small);
+                font-weight: 900;
+            }
+
+            .employee-info__message__text::before {
+                position: absolute;
+                left: -0.75em;
+                content: "”";
+            }
+
+            .employee-info__next-activity {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            :host[off-the-grid] .employee-info__next-activity {
+                opacity: 0;
+            }
+
+            .employee-info__next-activity__heading {
+                margin-bottom: calc(var(--baseline) * 0.3);
+                font-size: var(--font-size--xsmall);
+                font-weight: normal;
+                text-transform: uppercase;
+            }
+
+            .employee-info__next-activity__time {
+                font-size: var(--font-size--medium);
+                font-weight: 500;
+            }
+
+            .employee-info__bottom__emoji {
+                font-size: 1.5rem;
+            }
+        </style>
+    </template>
+</dom-module>

@@ -1,0 +1,74 @@
+<dom-module id="org-wall">
+
+    <link rel="import" href="shared-wall-style.html">
+    <link rel="import" href="org-wall-style.html">
+
+    <template>
+        <style include="shared-wall-style"></style>
+        <style include="org-wall-style"></style>
+
+        <close-icon class="exitBtn" on-tap="back" hide$="[[!hideParent]]"> </close-icon>
+
+        <input id="inputField" value="{{filterText::input}}" on-keyup="search" placeholder=" Sök" hide$="[[!hideParent]]">
+
+        <!--Make the Parent hidden and show the child if the user click search icon -->
+        <div class="Parent" hide$="[[hideParent]]">
+
+            <div id="screen-overlay"  hide$="[[!shOwerlay]]">
+                <mobile-view id="focused-employee" class="focusedEmployee" on-tap="changeWidth" show-overlay="{{shOwerlay}}" hide$="[[!shOwerlay]]" locations="[[locations]]" availabilities="[[availabilities]]" employee="[[focusedEmployee]]" calendar-events="[[calendarEvents]]" expanded>
+                </mobile-view>
+            </div>
+            <wall-message-view> </wall-message-view>
+
+            <div class="header-area">
+                <span>Contacts</span>
+                <search-icon class="foreground" on-tap="navigateToSearchView" hide$="[[hideParent]]"></search-icon>
+            </div>
+            <div class="employee-list">
+                <template is="dom-repeat" items="{{employeesAtOffice}}" as="employee">
+                    <employee-view id="add-dot-to-available-employees" locations="[[locations]]" availabilities="[[availabilities]]" employee="[[employee]]" calendar-events="[[calendarEvents]]" on-tap="onTapEmployeeView"></employee-view>
+                </template>
+
+                <template is="dom-repeat" items="{{employeesOutOfOffice}}" as="employee">
+                    <employee-view locations="[[locations]]" availabilities="[[availabilities]]" employee="[[employee]]" calendar-events="[[calendarEvents]]" on-tap="onTapEmployeeView"></employee-view>
+                </template>
+
+                <template is="dom-repeat" items="{{employeesOnLeave}}" as="employee">
+                    <employee-view locations="[[locations]]" availabilities="[[availabilities]]" employee="[[employee]]" calendar-events="[[calendarEvents]]" on-tap="onTapEmployeeView"></employee-view>
+                </template>
+            </div>
+
+
+
+        </div>
+
+        <!--Show the Child if the user click search icon -->
+        <div class="Child" hide$="[[!hideParent]]">
+
+            <table id="myTable">
+                <tr class="header">
+                    <th style="width:60%;">Name</th>
+                    <th style="width:40%;">Image</th>
+                </tr>
+                <template id="resultList" is="dom-repeat" items="{{ Employees }}" filter="filterRoom" as="employee" index-as="scheduleId">
+
+                    <tr>
+                        <td on-tap="showSearchedEmployee"> {{employee.name}} </td>
+                        <td> <img src="{{employee.image}}" alt="" style="width: 40px; height: 40px;">
+                        </td>
+                    </tr>
+            </table>
+
+        </div>
+
+        </template>
+    </template>
+    </div>
+
+
+
+    </template>
+
+    <script src="org-wall.js"></script>
+
+</dom-module>
