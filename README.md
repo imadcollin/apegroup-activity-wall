@@ -9,7 +9,7 @@ to check the first prototype please check the *trunk branch* .
 2. Clone the source code from Github. In the terminal type:
 
  ```
-git clone git@github.com:apegroup/ikea-activitywall-web.git
+git clone git@github.com:apegroup/activity-wall-mobiles.git
 ```
 
 ## Dependencies
