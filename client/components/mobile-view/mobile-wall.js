@@ -7,8 +7,8 @@ class MobileWall {
         return [window.Behaviors.Wall];
     }
     ready() {
-        console.log("ready");
-        this.dotForAvaaliability = "green";
+        console.log(`ready`);
+        this.dotForAvaaliability = `green`;
     }
     beforeRegister() {
         this.properties = {
@@ -36,16 +36,16 @@ class MobileWall {
                 type: String,
                 value: function () {
                     //Should be this employee.Location when the API wordks as should
-                    if (this.employeeEmail == "") {
-                        return "red";
+                    if (this.employeeEmail == ``) {
+                        return `red`;
                     }
                     else {
-                        console.log("employee", this.employee);
-                        return "green";
+                        console.log(`employee`, this.employee);
+                        return `green`;
                     }
                 }
             }
-        }
+        };
     }
 
     /**
@@ -62,34 +62,39 @@ class MobileWall {
      * The function don't allow bubbling for multi level trigger
      */
     hideContent(event) {
-        console.log("here the all employees", this.employeesOutOfOffice);
+        console.log(`here the all employees`, this.employeesOutOfOffice);
 
         this.fire(`myevent`, this.showOverlay);
         this.showOverlay = true;
         console.log(this.showOverlay);
-        event = event || window.event // cross-browser event
+        event = event || window.event; // cross-browser event
         if (event.stopPropagation) {
-            event.stopPropagation()
+            event.stopPropagation();
         } else {
-            event.cancelBubble = true
+            event.cancelBubble = true;
         }
 
-        var focusedEmployee = document.getElementById("focused-employee");
-        focusedEmployee.classList.remove("mobileFullScreen");
-        focusedEmployee.classList.add("focusedEmployee");
+        var focusedEmployee = document.getElementById(`focused-employee`);
+        focusedEmployee.classList.remove(`mobileFullScreen`);
+        focusedEmployee.classList.add(`focusedEmployee`);
 
         /*For flex direction*/
-        mobileIcons.classList.remove("iconWithLargView");
-        mobileIcons.classList.add("mobileIcons");
+        mobileIcons.classList.remove(`iconWithLargView`);
+        mobileIcons.classList.add(`container`);
+
+
+        var new_transform = `translate(0%, 100%)`;
+
+        focusedEmployee.style.transform = new_transform;
 
 
     }
     phoneCall(event) {
-        event = event || window.event // cross-browser event
+        event = event || window.event; // cross-browser event
         if (event.stopPropagation) {
-            event.stopPropagation()
+            event.stopPropagation();
         } else {
-            event.cancelBubble = true
+            event.cancelBubble = true;
         }
 
         /*ToDo*/
@@ -99,41 +104,41 @@ class MobileWall {
         } else {
             //Where the employee phone number should be added to the Firebase
             //@Param phone: is the employee.phoneNumber
-            this.employee.phone = "0730000";
+            this.employee.phone = `0730000`;
             this.employeePhone = this.employee.phone;
-            window.open("tel:" + this.employeePhone);
+            window.open(`tel:` + this.employeePhone);
         }
-        console.log("Calling ...");
+        console.log(`Calling ...`);
     }
     mailTo(event) {
-        event = event || window.event // cross-browser event
+        event = event || window.event; // cross-browser event
         if (event.stopPropagation) {
-            event.stopPropagation()
+            event.stopPropagation();
         } else {
-            event.cancelBubble = true
+            event.cancelBubble = true;
         }
         if (this.employee === undefined || this.employee === `` || typeof this.employee == undefined) {
             this.employeeEmail = `No Email `;
         } else {
 
             this.employeeEmail = this.employee.email;
-            console.log("email", this.employeeEmail);
-            window.open("mailto:" + this.employeeEmail, "_self");
+            console.log(`email`, this.employeeEmail);
+            window.open(`mailto:` + this.employeeEmail, `_self`);
             // location.href = "mailto:"+this.employeeEmail;
         }
-        console.log("Mailing ...");
+        console.log(`Mailing ...`);
     }
 
     employeeSlack(event) {
-        event = event || window.event // cross-browser event
+        event = event || window.event; // cross-browser event
         if (event.stopPropagation) {
-            event.stopPropagation()
+            event.stopPropagation();
         } else {
-            event.cancelBubble = true
+            event.cancelBubble = true;
         }
-        window.open("slack:open", "_self")
-        console.log("Slacking ...");
-        console.log("location is :", this.locations);
+        window.open(`slack:open`, `_self`);
+        console.log(`Slacking ...`);
+        console.log(`location is :`, this.locations);
     }
 }
-Polymer(MobileWall)
+Polymer(MobileWall);
